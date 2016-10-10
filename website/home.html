@@ -2,15 +2,14 @@
 <html>
 
 <head>
+  <meta charset="utf-8">
   <title>InforMe</title>
 </head>
 
 <body>
   <h1> Welcome to the InforMe Website! </h1>
   <p> We're in the process of building. Stay tuned. :) </p>
-</body>
-
-</html>
+  <p id="TestText"></p>
 
 <!-- Firebase Script, should be listed first. -->
 <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
@@ -24,4 +23,12 @@
     messagingSenderId: "486015433612"
   };
   firebase.initializeApp(config);
+  
+  var TestText = document.getElementByID('TestText');
+  var dbRef = firebase.database().ref().child('SampleText');
+  dbref.on('value', snap => TestText.innerText = snap.val());
+  
 </script>
+  
+</body>
+</html>
