@@ -1,4 +1,4 @@
-<!doctype HTML>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -9,9 +9,12 @@
 <body>
   <h1> Welcome to the InforMe Website! </h1>
   <p> We're in the process of building. Stay tuned. :) </p>
-  <p id="TestText"></p>
+  
+  <h1 id="TestText"></h1>
 
 <!-- Firebase Script, should be listed first. -->
+<script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
 <script>
   // Initialize Firebase
@@ -24,10 +27,10 @@
   };
   firebase.initializeApp(config);
   
-  var TestText = document.getElementByID('TestText');
-  var dbRef = firebase.database().ref().child('SampleText');
-  dbref.on('value', snap => TestText.innerText = snap.val());
-  
+  var TestText = document.getElementByID('TestText');	// Not properly reading text from the 'text' DB. Why?
+  var database = firebase.database();
+  var dbRef = firebase.database().ref().child('text');
+  dbRef.on('text_changes', snap => TestText.innerText = snap.val());
 </script>
   
 </body>
