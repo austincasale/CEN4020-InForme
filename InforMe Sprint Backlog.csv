@@ -1,0 +1,8 @@
+User Stories,Story Points,Tasks,Day 1,Day 2,Day 3,Day 4,Day 5
+"As a user, I would like to choose my article preferences so that I am given more similar articles in the future.",4,Article preferences saved in user account tables.,,,,,
+,,Article keywords saved to relate one article to another.,,,,,
+,,GUI feature to allow yes/no article preferences.,,,,,
+"As a user, I would like to manage my article preferences so that I can remove any mistaken preferences.",2,Add interface section under User Profile for preference management.,,,,,
+,,List preferences in order with Yes/No toggle.,,,,,
+"As a user, I would like to visit the full text of the summarized article so that I can explore the topic further.",1,Attach URL to body of article summary.,,,,,
+,,Allow users to press down on article summary to visit full article.,,,,,
