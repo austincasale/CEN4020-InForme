@@ -10,7 +10,7 @@
   <h1> Welcome to the InforMe Website! </h1>
   <p> We're in the process of building. Stay tuned. :) </p>
   
-  <h1 id="TestText"></h1>
+  <h1 id="Sample"></h1>
 
 <!-- Firebase Script, should be listed first. -->
 <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-app.js"></script>
@@ -27,10 +27,14 @@
   };
   firebase.initializeApp(config);
   
-  var TestText = document.getElementByID('TestText');	// Not properly reading text from the 'text' DB. Why?
-  var database = firebase.database();
-  var dbRef = firebase.database().ref().child('text');
-  dbRef.on('text_changes', snap => TestText.innerText = snap.val());
+  var db = firebase.database();
+  var ref = db.ref("informe-c050b");
+  ref.on("Sample", function(snapshot){
+  console.log(snapshot.val());
+  }, function (errorObject) {
+  console.log("The read failed: " + errorObject.code);
+  });
+  
 </script>
   
 </body>
