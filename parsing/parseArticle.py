@@ -1,3 +1,5 @@
+# Implemented by Austin and Miguel
+
 from bs4 import BeautifulSoup
 import requests, time, re
 # Input any article on https://www.theguardian.com/
