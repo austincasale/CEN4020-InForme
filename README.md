@@ -1,2 +1,12 @@
-# CEN4020-InForme
-CEN4020 Fall2016 project, Ernie and the Battle Toads
+# CEN4020-InForme Compilation Instructions
+Website:
+* Download home.html and open in local web browser (Chrome, IE, Firefox, etc).
+* Test Cases: 
+
+Android:
+* TBD
+* Test Cases:
+
+Python (Back-End):
+* TBD
+* Test Cases:
