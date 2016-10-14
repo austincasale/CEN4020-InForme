@@ -1,7 +1,6 @@
 # Implemented by Austin and Miguel
-
 from bs4 import BeautifulSoup
-import requests, time, re
+import requests, time, re, sys
 # Input any article on https://www.theguardian.com/
 
 url = raw_input("Please enter the url: ")
@@ -16,13 +15,20 @@ url = raw_input("Please enter the url: ")
 # wouldn't need a template for every site being accessed (buzzfeed, guardian,foxnews, etc..)
 
 # Make our request to our URL
-response = requests.get(url)
+try:
+	response = requests.get(url)
+except:
+	print "No URL entered"
 
 # Check response and declare soup object
-if response.ok:
-	html = response.content
-	soup = BeautifulSoup(html, 'html.parser')
-
+try:
+	if response.ok:
+		html = response.content
+		soup = BeautifulSoup(html, 'html.parser')
+except NameError:
+	print "No URL entered"
+	sys.exit()
+	
 # Sleep to avoid spamming requests and getting timed out, don't be a dick
 time.sleep(.2)
 
@@ -38,10 +44,15 @@ text = soup.find("div", "content__article-body from-content-api js-article__body
 try:
 	x = re.sub('<[^<]+?>', "", text.text)
 	x = re.sub('\n', "", text.text)
-except e:
+except AttributeError:
 	print "Shit, couldn't find anything to parse"
+	sys.exit()
+
 print x
 # Print article title
-print "Title: ", soup.title.text
+print "\n\nTitle: ", soup.title.text
+
+
+
 
 
