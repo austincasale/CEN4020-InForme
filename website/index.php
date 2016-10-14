@@ -17,10 +17,10 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   
   <h1 id="Sample"></h1>
 
-<!-- Firebase Script, should be listed first. // NYI
-<script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-database.js"></script>
+<!-- Firebase Script, should be listed first. // NYI -->
+
 <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
+<!--
 <script>
   // Initialize Firebase
   var config = {
@@ -41,6 +41,14 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   });
 </script>
  -->
+ 
+ <pre id="object"></pre>
+ 
+ 
+ <script src="app.js"></script>
+ 
+ 
+ 
 
 <form action="index.php" method="post">
 	Enter URL Here:	<input type="text" name="article" /><br  />
