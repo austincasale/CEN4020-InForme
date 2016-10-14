@@ -15,10 +15,8 @@ url = raw_input("Please enter the url: ")
 # wouldn't need a template for every site being accessed (buzzfeed, guardian,foxnews, etc..)
 
 # Make our request to our URL
-try:
-	response = requests.get(url)
-except:
-	print "No URL entered"
+response = requests.get(url)
+
 
 # Check response and declare soup object
 try:
@@ -28,7 +26,7 @@ try:
 except NameError:
 	print "No URL entered"
 	sys.exit()
-	
+
 # Sleep to avoid spamming requests and getting timed out, don't be a dick
 time.sleep(.2)
 
