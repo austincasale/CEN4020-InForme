@@ -30,11 +30,14 @@ time.sleep(.2)
 # Find <div class = "whatever name is"
 text = soup.find("div", "content__article-body from-content-api js-article__body")
 
+
 #using .text because the type(text) is a bs4 obj
 # sub can remove elements
-x = re.sub('<[^<]+?>', "", text.text)
-x = re.sub('\n', "", text.text)
-
+try:
+	x = re.sub('<[^<]+?>', "", text.text)
+	x = re.sub('\n', "", text.text)
+except e:
+	print "Shit, couldn't find anything to parse"
 print x
 # Print article title
 print "Title: ", soup.title.text
