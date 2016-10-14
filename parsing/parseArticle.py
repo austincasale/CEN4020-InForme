@@ -33,6 +33,8 @@ time.sleep(.2)
 # Prettify is used to print the html for the url in a way that is easier to read
 #print soup.prettify()
 
+# Need logic to find tag with most <p> inside
+
 # Find <div class = "whatever name is"
 text = soup.find("div", "content__article-body from-content-api js-article__body")
 
