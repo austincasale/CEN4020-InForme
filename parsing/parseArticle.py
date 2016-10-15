@@ -15,10 +15,8 @@ url = raw_input("Please enter the url: ")
 # wouldn't need a template for every site being accessed (buzzfeed, guardian,foxnews, etc..)
 
 # Make our request to our URL
-try:
-	response = requests.get(url)
-except:
-	print "No URL entered"
+response = requests.get(url)
+
 
 # Check response and declare soup object
 try:
@@ -28,12 +26,14 @@ try:
 except NameError:
 	print "No URL entered"
 	sys.exit()
-	
+
 # Sleep to avoid spamming requests and getting timed out, don't be a dick
 time.sleep(.2)
 
 # Prettify is used to print the html for the url in a way that is easier to read
 #print soup.prettify()
+
+# Need logic to find tag with most <p> inside
 
 # Find <div class = "whatever name is"
 text = soup.find("div", "content__article-body from-content-api js-article__body")

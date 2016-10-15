@@ -1,0 +1,54 @@
+<!-- Implemented by Dexter and Ernest -->
+
+<!DOCTYPE html>
+
+
+<html>
+
+<head>
+
+<!-- AngularJS -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/3.5.0/firebase.js"></script>
+<!-- AngularFire -->
+<script src="https://cdn.firebase.com/libs/angularfire/2.0.2/angularfire.min.js"></script>
+
+  <meta charset="utf-8">
+  <title>InforMe</title>
+</head>
+
+<body>
+  <h1> Welcome to the InforMe Website! </h1>
+  <p> We're in the process of building. Stay tuned. :) </p>
+  
+  <h1 id="bigOne"></h1>
+
+
+
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyB_rPPGzLDgkO7ohjDRSUddvjhDk120fWg",
+    authDomain: "mycentest.firebaseapp.com",
+    databaseURL: "https://mycentest.firebaseio.com",
+    storageBucket: "mycentest.appspot.com",
+    messagingSenderId: "308805634952"
+  };
+
+	firebase.initializeApp(config);
+  
+	var bigOne = document.getElementById('bigOne');
+	var dbRef = firebase.database().ref().child('text');
+	dbRef.on('value', snap => bigOne.innerText = snap.val());
+
+</script>
+  
+
+  
+<p>
+
+</p>
+ 
+</body>
+</html>
