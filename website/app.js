@@ -13,9 +13,15 @@
 
 	firebase.initializeApp(config);
   
-	var bigOne = document.getElementById('bigOne');
-	var dbRef = firebase.database().ref().child('text');
-	dbRef.on('value', snap => bigOne.innerText = snap.val());
-	firebase.database().ref().child('testing').on('value', snap => testOne.innerText = snap.val());
-
+	var urlSpecified = document.getElementById('urlSpef');
+	var articleTitle = document.getElementById('articleTitle');
+	
+	var urlSpef = firebase.database().ref().child('DBurlSpef');
+	var dbRef = firebase.database().ref().child('DBarticleTitle');
+	
+	urlSpef.on('value', snap => urlSpecified.innerText = snap.val());
+	dbRef.on('value', snap => articleTitle.innerText = snap.val());
+	
+	firebase.database().ref().child('DBarticleSummary').on('value', snap => articleSummary.innerText = snap.val());
+	firebase.database().ref().child('DBcitation').on('value', snap => citation.innerText = snap.val());
 }());
