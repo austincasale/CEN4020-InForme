@@ -1,30 +1,7 @@
-<!-- Implemented by Dexter and Ernest -->
-
-<!DOCTYPE html>
+(function() {
 
 
-<html>
 
-<head>
-<!-- Firebase -->
-<script src="firebase.js"></script>
-
-  <meta charset="utf-8">
-  <title>InforMe</title>
-</head>
-
-<body>
-  <h1> Welcome to the InforMe Website! </h1>
-  <p> We're in the process of building. Stay tuned. :) </p>
-  
-  <h1 id="bigOne"></h1>
-  <p id="testOne">
-  
-  </p>
-
-
-<!--
-<script>
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyB_rPPGzLDgkO7ohjDRSUddvjhDk120fWg",
@@ -39,10 +16,6 @@
 	var bigOne = document.getElementById('bigOne');
 	var dbRef = firebase.database().ref().child('text');
 	dbRef.on('value', snap => bigOne.innerText = snap.val());
+	firebase.database().ref().child('testing').on('value', snap => testOne.innerText = snap.val());
 
-</script>
--->
-
-<script src="app.js"></script>
-</body>
-</html>
+}());
