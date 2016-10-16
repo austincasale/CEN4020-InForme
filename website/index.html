@@ -1,17 +1,14 @@
 <!-- Implemented by Dexter and Ernest -->
 
 <!DOCTYPE html>
-
-
-<html>
+<html lang="en-US">
 
 <head>
-<!-- Firebase -->
-<script src="firebase.js"></script>
-<!-- CSS File
-<script src="styles.css"></script>
--->
-
+  <!-- Firebase Connection -->
+  <script src="https://www.gstatic.com/firebasejs/3.5.0/firebase.js"></script>
+  <!-- CSS File -->
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  
   <meta charset="utf-8">
   <title>InforMe</title>
 </head>
@@ -19,42 +16,25 @@
 <body>
 
 <header> 
-	<h1> Welcome to the InforMe Website! </h1>
-	<p> We're in the process of building. Stay tuned. :) </p>
+	<img src="http://i.imgur.com/dCrFg6Q.png" style="display: block; margin: auto">
+	<ul>
+		<li><a href="/" title="Home">Home</a></li>
+		<li><a href="about.html" title="About">About</a></li>
+		<li><a href="contact.html" title="Contact">Contact</a></li>
+	</ul>
 </header>
- 
- 
+
+<!-- Still trying to figure out how to save the URL to the database. -->
 <form>
-	<input type="text" id="urlSpef" size="100" placeholder="Paste your URL for summarization here."> <input type="submit" value="Submit URL">
+	<input type="text" id="urlSpef" size="100" placeholder="Paste your URL for summarization here."><input onclick=storeURL(urlSpef) type="submit" value="Submit URL">
 </form><br>
 
-
-<section width="150" height="150" style="border:2px; border-style:solid; border-color:#000000; padding: 3px;">
+<section width="150" height="150" style="border:2px; border-style:solid; border-color:#000000; padding: 5px;">
 	<h1 id="articleTitle"></h1>
 	
-	<p id="articleSummary"></p>
+	<p class="SmallTopPadding" id="articleSummary"></p>
 	<br><cite id="citation"></cite>
 </section>
-
-<!--
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyB_rPPGzLDgkO7ohjDRSUddvjhDk120fWg",
-    authDomain: "mycentest.firebaseapp.com",
-    databaseURL: "https://mycentest.firebaseio.com",
-    storageBucket: "mycentest.appspot.com",
-    messagingSenderId: "308805634952"
-  };
-
-	firebase.initializeApp(config);
-  
-	var bigOne = document.getElementById('bigOne');
-	var dbRef = firebase.database().ref().child('text');
-	dbRef.on('value', snap => bigOne.innerText = snap.val());
-
-</script>
--->
 
 <script src="app.js"></script>
 </body>
