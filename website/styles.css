@@ -1,40 +1,14 @@
 /* Implemented by Dexter and Ernie */
 
+/* Primary Tag Formatting */
+header {
+  width: 21.5%;
+  background-color: #333;
+}
+
 p, h1, h2, h3, cite {
 	font-family: "Georgia", serif;
 	color: black;
-}
-
-.center {
-	text-align: center;
-}
-
-h1 {
-	margin-top: 1px;
-}
-
-ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	background-color: #333;
-}
-
-li {
-	float: left;
-}
-
-li a {
-	display: block;
-	color: white;
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
-}
-
-li a:hover {
-	background-color: #111;
 }
 
 cite {
@@ -42,24 +16,47 @@ cite {
 	display: block;
 }
 
-input[type=text]:hover {
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
+h1 {
+	margin-top: 1px;
 }
 
-input[type=text]:focus {
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
+/* Navbar Styles */
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 21.3%;
+	height: 100%;
+	background-color: #333;
+	position: fixed;
+	overflow: auto;
 }
 
-input[type=text], select {
-  width: 100%;
+li a {
+	display: block;
+	color: white;
+	text-align: left;
+	padding: 8px 16px;
+	text-decoration: none;
+	font-size: 130%;
+}
+
+li a:hover {
+	background-color: #111;
+}
+
+/* Input Box/Submit for URLs */
+input[type=url], select {
+  width: 80%;
   padding: 12px 12px;
   margin 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=url]:focus {
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -76,6 +73,24 @@ input[type=submit] {
   cursor: pointer;
 }
 
-input[type=submit]:focus {
+input[type=submit]:focus, input[type=submit]:hover {
   background-color: Silver;
+}
+
+/* Main Page Column */
+#ColumnContent {
+  width: 75%;
+  margin-left: 27%;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+/* Summary Box */
+#SummarySection {
+  float: left;
+  width: 89%;
+  border: 2px;
+  border-style: solid;
+  border-color: #000000;
+  padding: 5px;
 }
