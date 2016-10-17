@@ -24,23 +24,11 @@
 	</ul>
 </header>
 
-<!-- Still trying to figure out how to save the URL to the database. -->
+
 <br><form>
-	<input type="text" id="urlSpef" size="100" placeholder="Paste your URL for summarization here.">
-</form><button onclick="storeURL()">Submit URL</button><br>
+	<input type="text" id="urlSpef" size="100" placeholder="Paste your URL for summarization here."><input type="submit" onclick="storeURL()" value="Submit URL">
+</form><br>
 
-
-<!--
-<script>
-// Written by Ernie 10/17/2016
-function storeURL() {
-	var url = document.getElementById('urlSpef').value;	// Store the value of the text field
-	var dbURL = firebase.database().ref().child('DBurlSpef');	// We want to put our data at the main db, at child DBurlSpef
-	
-	dbURL.set(url);	// Set the value of our child to the value in url, aka our text field
-}
-</script>
--->
 
 <section width="150" height="150" style="border:2px; border-style:solid; border-color:#000000; padding: 5px;">
 	<h1 id="articleTitle"></h1>
