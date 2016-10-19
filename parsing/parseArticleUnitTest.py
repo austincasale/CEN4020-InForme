@@ -6,7 +6,7 @@ import requests, time, re, sys, unittest
 url1 = "https://www.theguardian.com/us-news/2016/oct/19/donald-trump-and-hillary-clinton-face-fear-and-loathing-at-third-debate"
 url2 = "https://www.theguardian.com/science/2016/oct/19/stephen-hawking-ai-best-or-worst-thing-for-humanity-cambridge"
 url3 = "https://www.theguardian.com/uk-news/2016/oct/19/calais-camp-charity-threatens-uk-with-legal-action-over-vulnerable-children"
-url4 = "asd"
+url4 = "https://docs.python.org/3.4/howto/urllib2.html"
 def getBody(url):
 	# Make our request to our URL
 	response = requests.get(url)
