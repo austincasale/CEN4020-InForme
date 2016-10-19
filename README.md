@@ -13,5 +13,5 @@ Python (Back-End):
   from https://www.theguardian.com/us, i.e https://www.theguardian.com/us-news/2016/oct/19/donald-trump-and-hillary-clinton-face-fear-and-loathing-at-third-debate
 * Unit Test:
    Download parseArticleUnitTest.py off github, run it with "python parseArticleUnitTest.py"
-   It will run for 3 guardian article links and one random string that isn't a link
-   Tests to be sure it gets an article body
+   It will run for 3 guardian article links and one random string that isn't a link.
+   It tests to be sure it gets an article body
