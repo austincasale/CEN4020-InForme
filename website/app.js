@@ -18,13 +18,18 @@
 	urlSpef.on('value', snap => urlSpecified.innerText = snap.val());
 	dbTitle.on('value', snap => articleTitle.innerText = snap.val());
 	
+	// Long form of live updating the database
 	firebase.database().ref().child('DBarticleSummary').on('value', snap => articleSummary.innerText = snap.val());
 	firebase.database().ref().child('DBcitation').on('value', snap => citation.innerText = snap.val());
+	
+	
 }());
+	
 
-// How the hell do we do write data from the input box to the database?
-function storeURL(urlSpef) {
-  firebase.database().ref('cen4020informe/' + DBurlSpef).set({
-    DBurlSpef: urlSpef
-  });
+// Written by Ernie 10/17/2016
+function storeURL() {
+	var url = document.getElementById('urlSpef').value;	// Store the value of the text field
+	var dbURL = firebase.database().ref().child('DBurlSpef');	// We want to put our data at the main db, at child DBurlSpef
+	
+	dbURL.set(url);	// Set the value of our child to the value in url, aka our text field
 }
