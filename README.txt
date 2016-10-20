@@ -8,3 +8,5 @@ Developer options may need to be on
 *Phone will ask to run the app with special permissions
 *Install
 *Open
+
+So far it only has two editTexts that posts data to the firebase when the submit button is pushed. If you need to see if data is actually posted, I can add you as an owner if you provide a gmail.
