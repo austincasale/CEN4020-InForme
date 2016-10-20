@@ -1,8 +1,12 @@
 # Implemented by Austin and Miguel
 from bs4 import BeautifulSoup
-import requests, time, re, sys
+import requests, time, re, sys, unittest
 # Input any article on https://www.theguardian.com/
 
+url1 = "https://www.theguardian.com/us-news/2016/oct/19/donald-trump-and-hillary-clinton-face-fear-and-loathing-at-third-debate"
+url2 = "https://www.theguardian.com/science/2016/oct/19/stephen-hawking-ai-best-or-worst-thing-for-humanity-cambridge"
+url3 = "https://www.theguardian.com/uk-news/2016/oct/19/calais-camp-charity-threatens-uk-with-legal-action-over-vulnerable-children"
+url4 = "https://docs.python.org/3.4/howto/urllib2.html"
 def getBody(url):
 	# Make our request to our URL
 	response = requests.get(url)
@@ -41,7 +45,11 @@ def getBody(url):
 	# Print article title
 	print "\n\nTitle: ", soup.title.text
 
-url = raw_input("Please enter the url: ")
+	return x
+
+
+		
+
 
 # Two ideas:
 # _____________Idea 1 ____________
@@ -54,9 +62,23 @@ url = raw_input("Please enter the url: ")
 
 
 
-getBody(url)
+
+class TestScrape(unittest.TestCase):
+	def testURL1(self):
+		self.assertNotEqual(getBody(url1), "")
+
+	def testURL2(self):
+		self.assertNotEqual(getBody(url2), "")
+	def testURL3(self):
+		self.assertNotEqual(getBody(url1), "")
+
+	def testURL4(self):
+		self.assertNotEqual(getBody(url4), "")
+
+	
 
 
-
+if __name__ == '__main__':
+	unittest.main()
 
 

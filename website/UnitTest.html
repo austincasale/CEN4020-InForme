@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+	<!-- Firebase Connection -->
+    <script src="https://www.gstatic.com/firebasejs/3.5.0/firebase.js"></script>
+    <!-- CSS File -->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+	
+	<meta charset="utf-8">
+	<title>InforMe Unit Test</title>
+</head>
+
+<body>
+<header>
+	<h1 style="text-align: center">InforMe Unit Testing</h1>
+</header>
+
+<!-- Unit Test 1 (Implemented by Dexter 10/19/2016) -->
+<h2 style="text-decoration: underline;">Input and Firebase Testing</h2>
+<p>Type in any URL into the form below and press submit. First, it will verify if the URL is legitimate. Then, it will post the URL into the Firebase database.
+Finally, it will pull the data back from the Firebase.</p>
+<form id="InputForm">
+	<input type="text" id="urlSpef" size="100" placeholder="Paste your URL for summarization here."><input type="submit" onclick="URLVerification()" value="Submit URL">
+</form>
+
+<script src="app.js"></script>
+
+<!-- Unit Test 1 (Implemented by Dexter 10/19/2016) -->
+<script>
+function URLVerification() {
+    var urlPattern = new RegExp("(http|ftp|https)://[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?"); //Valid URL pattern.
+	var givenURL = document.getElementById("InputForm").elements[0].value;
+	var URLinDB;
+    if (urlPattern.test(givenURL)) {
+		storeURL();
+		firebase.database().ref().child('DBurlSpef').on('value', snap => URLinDB = snap.val())
+		alert("This is the value that is now stored in the database:\n" + URLinDB);
+	} else {
+		alert("The given URL was invalid. Please use the following format:\nhttp://www.WEBSITE_NAME_HERE.com/.")
+	}
+}
+</script>
+
+</body>
+</html>
