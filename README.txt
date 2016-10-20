@@ -9,4 +9,4 @@ Developer options may need to be on
 *Install
 *Open
 
-So far it only has two editTexts that posts data to the firebase when the submit button is pushed. If you need to see if data is actually posted, I can add you as an owner if you provide a gmail.
+So far it only has two editTexts that posts data to the firebase when the submit button is pushed. Grader can be added as owner to view data.
