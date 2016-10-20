@@ -1,7 +1,7 @@
 # CEN4020-InForme Compilation Instructions
 Website:
-* Download home.html and open in local web browser (Chrome, IE, Firefox, etc).
-* Test Cases: 
+* Download the /website/ folder and all of its contents. Open home.html in your local web browser (any should do). You can test functionality from there.
+* Unit Test: Open UnitTest.html from the /website/ folder. As instructed, type in an invalid or valid URL into the input box and press "Submit." If valid: you will be shown what was saved to the database (which should reflect what you typed in). If invalid, you will be instructed on the acceptable format for URLs.
 
 Android:
 * TBD
