@@ -2,7 +2,7 @@ User Stories,Story Points,Tasks,Day 1,Day 2,Day 3,Day 4,Day 5
 "As a user, I would like to be able to visit InforMe through my web browser so that I can use it on the go.",1,Configure web server.,3,-,-,-,-
 "As a user, I would like for the domain name to be catchy so that I can remember it easily.",1,Register catchy domain name (Informe.fyi).,1,-,-,-,-
 "As a user, I would like for the URL input box to properly connect to the database, so that I can send my URL for summarization.",3,Configure writing to Firebase.,3,2,0,6,-
-"As a user, I would like for text to be displayed to the page with real-time updates.",3,Configure reading from Firebase.,3,4,2,-,-,-
+"As a user, I would like for text to be displayed to the page with real-time updates.",3,Configure reading from Firebase.,3,4,2,-,-
 "As a user, I would like to choose my article preferences so that I am given more similar articles in the future.",4,Article preferences saved in user account tables.,,,,,
 ,,Article keywords saved to relate one article to another.,,,,,
 ,,GUI feature to allow yes/no article preferences.,,,,,
