@@ -13,8 +13,13 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class dummy_data extends Activity {
@@ -53,6 +58,8 @@ public class dummy_data extends Activity {
             }
         };
 
+
+
     }
 
     @Override
@@ -71,6 +78,26 @@ public class dummy_data extends Activity {
                 }
             }
         });
+
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("Articles");
+
+        DatabaseReference articlesRef = myRef.getRoot();
+
+        articlesRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Log.d("Data Snapshot", dataSnapshot.getValue().toString());
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
     }
 
     @Override
@@ -90,11 +117,7 @@ public class dummy_data extends Activity {
         nameField.setText("");
         dataField.setText("");
 
-
-        database = FirebaseDatabase.getInstance();
-        myRef = database.getReference(name + "'s News Articles");
-
-        myRef.child(name).setValue(data);
+        myRef.push().setValue(data);
 
         Toast.makeText(this, "Button Clicked", Toast.LENGTH_LONG).show();
 
