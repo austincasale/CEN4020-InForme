@@ -15,9 +15,8 @@
 
 <body>
 
-<!-- Logo and Navbar -->
-<header>
-	<img src="InforMe_Logo.png" style="display: block; margin: left">
+<header> 
+	<img src="http://i.imgur.com/dCrFg6Q.png" style="display: block; margin: auto">
 	<ul>
 		<li><a href="/" title="Home">Home</a></li>
 		<li><a href="about.html" title="About">About</a></li>
@@ -25,22 +24,18 @@
 	</ul>
 </header>
 
-<div id="ColumnContent">
-<!-- Input Form for Summarization URL -->
-<br>
-<form>
-	<input type="url" id="urlSpef" size="100" placeholder="Paste your URL for summarization here."><input onclick=storeURL(urlSpef) type="submit" value="Submit URL">
-</form>
-<br>
 
-<!-- Article Summary Content -->
-<section id="SummarySection" width="150" height="150">
+<br><form>
+	<input type="text" id="urlSpef" size="100" placeholder="Paste your URL for summarization here."><input type="submit" onclick="storeURL()" value="Submit URL">
+</form><br>
+
+
+<section width="150" height="150" style="border:2px; border-style:solid; border-color:#000000; padding: 5px;">
 	<h1 id="articleTitle"></h1>
 	
-	<p id="articleSummary"></p>
+	<p class="SmallTopPadding" id="articleSummary"></p>
 	<br><cite id="citation"></cite>
 </section>
-</div>
 
 <script src="app.js"></script>
 </body>
