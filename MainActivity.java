@@ -1,32 +1,22 @@
 package com.example.celiachu.informe;
+//Copy from here to the end, skip the package name because it might have trouble compiling on your computer.
+//Package name also differs in AndroidMAnifest file and the res folder.
 
-import android.icu.util.Output;
-import android.net.Uri;
+
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.DataOutputStream;
+
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
 import java.net.URL;
-import java.net.URLEncoder;
-import java.nio.charset.Charset;
 import java.util.AbstractMap;
 import java.util.Map;
-import java.util.AbstractMap.SimpleEntry;
 
 import android.app.Activity;
-import android.os.Bundle;
 import android.util.Log;
 
 
