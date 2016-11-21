@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">DummyDB</string>
-    <string name="enterName">Enter Your Name</string>
-    <string name="enterData">Enter Data you want to submit</string>
-    <string name="submitData">Submit</string>
-</resources>
