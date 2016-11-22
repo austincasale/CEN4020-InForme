@@ -16,10 +16,20 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:layout_marginTop="33dp"
-        android:id="@+id/editText"
+        android:id="@+id/eMailorPhone"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:hint="Input Phone or E-mail"/>
+
+    <Button
+        android:text="Submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:id="@+id/submitMailorPhone"
+        android:layout_below="@+id/eMailorPhone"
+        android:layout_alignLeft="@+id/submitURL"
+        android:layout_alignStart="@+id/submitURL" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -27,41 +37,31 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/editText"
-        android:layout_alignEnd="@+id/editText"
-        android:id="@+id/editText2"
+        android:layout_alignRight="@+id/eMailorPhone"
+        android:layout_alignEnd="@+id/eMailorPhone"
+        android:id="@+id/urlToSummarize"
         android:hint="Input URL"/>
 
     <Button
         android:text="Submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
-        android:id="@+id/button3"
-        android:layout_below="@+id/editText2"
-        android:layout_alignLeft="@+id/button2"
-        android:layout_alignStart="@+id/button2" />
-
-    <Button
-        android:text="Submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:id="@+id/button2"
-        android:layout_below="@+id/editText"
+        android:id="@+id/submitURL"
+        android:layout_below="@+id/urlToSummarize"
         android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button3"
-        android:layout_alignLeft="@+id/editText2"
-        android:layout_alignStart="@+id/editText2"
+        android:layout_below="@+id/submitURL"
+        android:layout_alignLeft="@+id/eMailorPhone"
+        android:layout_alignStart="@+id/eMailorPhone"
         android:layout_marginLeft="18dp"
         android:layout_marginStart="18dp"
         android:layout_marginTop="49dp"
         android:id="@+id/textView3"
-        android:layout_alignRight="@+id/editText2"
-        android:layout_alignEnd="@+id/editText2" />
+        android:layout_alignRight="@+id/eMailorPhone"
+        android:layout_alignEnd="@+id/eMailorPhone" />
 
 </RelativeLayout>
