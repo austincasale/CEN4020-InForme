@@ -8,25 +8,23 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.Button;
+import android.app.Activity;
+import android.util.Log;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
 import java.net.URL;
-import java.util.AbstractMap;
-import java.util.Map;
 
-import android.app.Activity;
-import android.util.Log;
-import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
+    //Creating Views & Widgets to connect to UI elements
     private EditText eMailorPhone, urlToSummarize;
     private Button submiteMailorPhone, submitURL;
     private TextView replyFromServer;
@@ -36,12 +34,16 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Linking variables in code to UI elements
         eMailorPhone = (EditText) findViewById(R.id.eMailorPhone);
         urlToSummarize = (EditText) findViewById(R.id.urlToSummarize);
 
         submiteMailorPhone = (Button) findViewById(R.id.submitMailorPhone);
         submitURL = (Button) findViewById(R.id.submitURL);
 
+        replyFromServer = (TextView) findViewById(R.id.replyFromServer);
+
+        //onClick listeners to handle what happens when their respective buttons are clicked
         submiteMailorPhone.setOnClickListener (new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,44 +68,39 @@ public class MainActivity extends Activity {
 
     }
 
+    //AsyncTask responsible for POST methods. Needs to be placed in AsyncTask because the Main
+    //Thread can not be held up with loading taskss; needs to happen in the background.
     private class myRunner extends AsyncTask<String, String, String> {
 
-        @Override
-        protected void onPostExecute(String result) {
-
-            replyFromServer = (TextView) findViewById(R.id.textView3);
-            replyFromServer.setText(result);
-        }
-
+        //Main Task. Executes in another thread, in the background.
         @Override
         protected String doInBackground(String... urlToSummarize) {
 
             HttpURLConnection client = null;
             StringBuilder replyFromServer = new StringBuilder();
 
+            //HTTP Connections operations need to be placed in a try block in case an error is encountered
             try {
 
                 URL url = new URL("http://posttestserver.com/post.php");
                 client = (HttpURLConnection) url.openConnection();
+
+                //Set properties for the HTTP Request
                 client.setRequestMethod("POST");
                 client.setDoOutput(true);
-                client.setRequestProperty("Content-Type",
-                        "application/x-www-form-urlencoded");
                 client.setDoInput(true);
-                client.setReadTimeout(10000);
-                client.setConnectTimeout(15000);
-                client.setRequestProperty("User-Agent", "Mozilla/5.0");
 
-                Map.Entry<String, String> request = new AbstractMap.SimpleEntry("URL", urlToSummarize[0]);
+                //Encode the request, UTF-8
+                byte[] encodedRequest = ("URL=" + urlToSummarize[0]).getBytes("UTF-8");
 
-                byte[] encodedRequest = (request.getKey() + "=" +  request.getValue()).getBytes("UTF-8");
-
+                //Write to OutputSteam
                 OutputStream os = client.getOutputStream();
                 os.write(encodedRequest);
                 os.flush();
                 os.close();
                 int responseCode = client.getResponseCode();
 
+                //Read from InputStream, Build the string line by line
                 BufferedReader br = new BufferedReader(new InputStreamReader(client.getInputStream()));
                 String line;
                 while((line = br.readLine()) != null){
@@ -121,7 +118,15 @@ public class MainActivity extends Activity {
                     client.disconnect();
             }
 
+            //Send the built string. After doInBackground executes it goes to onPostExecute
             return replyFromServer.toString();
+        }
+
+        //Update the TextView UI element with whatever the server send back
+        @Override
+        protected void onPostExecute(String result) {
+
+            replyFromServer.setText(result);
         }
     }
 }
