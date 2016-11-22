@@ -5,9 +5,15 @@ package com.example.celiachu.informe;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.Button;
 
-
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -18,9 +24,14 @@ import java.util.Map;
 
 import android.app.Activity;
 import android.util.Log;
+import android.widget.TextView;
 
 
 public class MainActivity extends Activity {
+
+    private EditText input, input2;
+    private Button submit, submit2;
+    private TextView replyFromServer;
 
 
     @Override
@@ -28,22 +39,53 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        myRunner postRun = new myRunner();
-        postRun.execute();
+        input = (EditText) findViewById(R.id.editText);
+        input2 = (EditText) findViewById(R.id.editText2);
+
+        submit = (Button) findViewById(R.id.button2);
+        submit2 = (Button) findViewById(R.id.button3);
+
+        submit.setOnClickListener (new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String urlToSummarize = input.getText().toString();
+                Log.v("Test", urlToSummarize);
+            }
+        });
+
+        submit2.setOnClickListener (new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String urlToSummarize = input2.getText().toString();
+
+                Log.v("Test", urlToSummarize);
+
+                myRunner postRun = new myRunner();
+
+                postRun.execute(urlToSummarize);
+            }
+
+        });
 
     }
+
 
     private class myRunner extends AsyncTask<String, String, String> {
 
         @Override
         protected void onPostExecute(String result) {
 
+            replyFromServer = (TextView) findViewById(R.id.textView3);
+            replyFromServer.setText(result);
         }
 
         @Override
-        protected String doInBackground(String... blah) {
+        protected String doInBackground(String... urlToSummarize) {
 
             HttpURLConnection client = null;
+            StringBuilder replyFromServer = new StringBuilder();
 
             try {
 
@@ -59,43 +101,30 @@ public class MainActivity extends Activity {
                 client.setRequestProperty("User-Agent", "Mozilla/5.0");
 
 
-                Map.Entry<String, String> request = new AbstractMap.SimpleEntry("URL", url.toString());
+                Map.Entry<String, String> request = new AbstractMap.SimpleEntry("URL", urlToSummarize[0]);
 
                 Log.v("Test", request.getValue().toString() + "," + request.getKey().toString());
 
                 String encodedRequest = request.getKey() + "=" +  request.getValue();
-
-                Log.v("Test", '|' + encodedRequest +'|');
 
                 OutputStream os = client.getOutputStream();
                 os.write(encodedRequest.getBytes("UTF-8"));
                 os.flush();
                 os.close();
 
-
                 int responseCode = client.getResponseCode();
 
-                //Log.v("Test", Integer.toString(responseCode));
-
-/*
                 InputStream is = client.getInputStream();
-                BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
 
-;               StringBuilder sb = new StringBuilder();
-                String line = null;
+                BufferedReader br = null;
+                String line;
 
-                // Read Server Response
-                while((line = reader.readLine()) != null)
-                {
-                    // Append server response in string
-                    sb.append(line + "\n");
+                br = new BufferedReader(new InputStreamReader(is));
+
+                while((line = br.readLine()) != null){
+                    replyFromServer.append(line);
                 }
-                Log.v("Test", "Here");*/
 
-                //Log.v("OutputStream", outputPost.toString());
-                //outputPost.flush();
-                //outputPost.close();
-                //client.connect();
 
             } catch (MalformedURLException error) {
                 Log.v("Malformed URL", "Malformed URL");
@@ -108,7 +137,7 @@ public class MainActivity extends Activity {
                     client.disconnect();
             }
 
-            return null;
+            return replyFromServer.toString();
         }
     }
 }
