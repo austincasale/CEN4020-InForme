@@ -96,7 +96,7 @@ public class MainActivity extends Activity {
 
                 Map.Entry<String, String> request = new AbstractMap.SimpleEntry("URL", urlToSummarize[0]);
 
-                byte[] encodedRequest = (request.getKey() + "=" +  request.getValue()).getBytes();
+                byte[] encodedRequest = (request.getKey() + "=" +  request.getValue()).getBytes("UTF-8");
 
                 OutputStream os = client.getOutputStream();
                 os.write(encodedRequest);
