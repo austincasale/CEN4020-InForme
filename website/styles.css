@@ -1,7 +1,21 @@
 /* Implemented by Dexter and Ernest */
+body {
+    background-color: #313034;
+}
+
+strong {
+	font-family: "Times New Roman", serif;
+	color: white;
+	font-size: 3em;
+}
+
+header {
+	text-align: center;
+}
+
 p, h1, h2, h3, cite {
 	font-family: "Georgia", serif;
-	color: black;
+	color: white;
 }
 
 h1 {
@@ -13,7 +27,7 @@ ul {
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
-	background-color: #333;
+	background-color: #313034;
 }
 
 li {
@@ -44,4 +58,32 @@ cite {
   border-color:#000000;
   padding: 5px;
   background: #F2F2F2;
+}
+
+#Footer {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 5px;
+  background-color: #3C3B41;
+  text-align: center;
+  font-size: 11px;
+  text-align: justify;
+}
+
+#AboutColumn {
+    float: left;
+    padding-left: 25%;
+    width: 15%;
+    height: 15%;
+    margin: 10px;
+}
+
+#ContactColumn {
+    float: right;
+    padding-right: 25%;
+    width: 15%;
+    height: 15%;
+    margin: 10px;
 }
