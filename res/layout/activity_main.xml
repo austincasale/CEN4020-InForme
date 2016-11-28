@@ -60,7 +60,7 @@
         android:layout_marginLeft="18dp"
         android:layout_marginStart="18dp"
         android:layout_marginTop="49dp"
-        android:id="@+id/replyFromServer"
+        android:id="@+id/textView3"
         android:layout_alignRight="@+id/eMailorPhone"
         android:layout_alignEnd="@+id/eMailorPhone" />
 
