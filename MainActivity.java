@@ -2,7 +2,6 @@ package com.example.celiachu.informe;
 //Copy from here to the end, skip the package name because it might have trouble compiling on your computer.
 //Package name also differs in AndroidMAnifest file and the res folder.
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +11,6 @@ import android.widget.Button;
 import android.app.Activity;
 import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -25,6 +23,8 @@ import java.net.URL;
 
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
+import com.facebook.accountkit.AccountKit;
+
 
 public class MainActivity extends Activity {
 
@@ -66,19 +66,18 @@ public class MainActivity extends Activity {
 
                 String summarizeThis = urlToSummarize.getText().toString();
 
-                POST summarizePOST = new POST();
+                myRunner postRun = new myRunner();
 
-                summarizePOST.execute(summarizeThis);
+                postRun.execute(summarizeThis);
             }
 
         });
-
 
     }
 
     //AsyncTask responsible for POST methods. Needs to be placed in AsyncTask because the Main
     //Thread can not be held up with loading taskss; needs to happen in the background.
-    private class POST extends AsyncTask<String, String, String> {
+    private class myRunner extends AsyncTask<String, String, String> {
 
         //Main Task. Executes in another thread, in the background.
         @Override
@@ -123,7 +122,7 @@ public class MainActivity extends Activity {
             } catch (SocketTimeoutException error) {
                 Log.v("Socket Timeout","Socket Timeout");
             } catch (IOException error) {
-                Log.v("Socket Timeout","IOException error");
+                Log.v("Socket Timeout","Socket Timeout");
             } finally {
                 if (client != null)
                     client.disconnect();
