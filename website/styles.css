@@ -4,7 +4,7 @@ body {
 }
 
 strong {
-	font-family: "Times New Roman", serif;
+	font-family: "Arial", serif;
 	color: white;
 	font-size: 3em;
 }
@@ -14,12 +14,13 @@ header {
 }
 
 p, h1, h2, h3, cite {
-	font-family: "Georgia", serif;
-	color: white;
+	font-family: "Arial", serif;
+	color: #7E7E7E;
 }
 
 h1 {
 	margin-top: 1px;
+	text-shadow: 2px 2px #000000;
 }
 
 ul {
@@ -51,8 +52,31 @@ cite {
 	display: block;
 }
 
+input[type=text], select {
+	width: 75%;
+    padding: 5px 5px;
+    margin: 8px 0px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: #000000;
+    cursor: text;
+}
+
+input[type=submit] {
+	width: 10%;
+    background-color: #7E7E7E;
+    color: white;
+    margin-left: 15px;
+    padding: 5px 5px;
+    border-color: #000000;
+    border-style: solid;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* -- BODY COMPONENTS (START) -- */
 #SummarySection {
-  border-radius: 10px;
+  border-radius: 5px;
   border:2px;
   border-style:solid;
   border-color:#000000;
@@ -60,6 +84,14 @@ cite {
   background: #F2F2F2;
 }
 
+#SubmissionSection {
+	border-radius: 5px;
+	padding: 5px;
+	background-color: #3C3B41;
+}
+/* -- BODY COMPONENTS (END) -- */
+
+/* -- FOOTER COMPONENTS (START) -- */
 #Footer {
   position: fixed;
   right: 0;
@@ -75,7 +107,7 @@ cite {
 #AboutColumn {
     float: left;
     padding-left: 25%;
-    width: 15%;
+    width: 20%;
     height: 15%;
     margin: 10px;
 }
@@ -83,7 +115,64 @@ cite {
 #ContactColumn {
     float: right;
     padding-right: 25%;
-    width: 15%;
+    width: 20%;
     height: 15%;
     margin: 10px;
 }
+/* -- FOOTER COMPONENTS (END) -- */
+
+/* -- CONTACT FORM COMPONENTS (START) -- */
+#contact_form {
+	width: 100%;
+	margin-left: 0;
+}
+
+#contact_name {
+	width: 75%;
+    padding: 5px 5px;
+    margin: 0px 0px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: #000000;
+    cursor: text;
+}
+
+#contact_email {
+	width: 75%;
+    padding: 5px 5px;
+    margin: 0px 0px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: #000000;
+    cursor: text;
+}
+
+#contact_message {
+	width: 75%;
+    padding: 5px 5px;
+    margin: 0px 0px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: #000000;
+    cursor: text;
+    vertical-align: top;
+    height: 5em;
+    resize: none;
+    font-family: "Arial", serif;
+}
+
+#contact_submit {
+	width: 75%;
+    background-color: #7E7E7E;
+    color: white;
+    padding: 5px 5px;
+    border-color: #000000;
+    border-style: solid;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form div + div {
+    margin-top: 1em;
+}
+/* -- CONTACT FORM COMPONENTS (END) -- */
