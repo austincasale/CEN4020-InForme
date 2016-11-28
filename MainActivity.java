@@ -21,6 +21,10 @@ import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
 import java.net.URL;
 
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+import com.facebook.accountkit.AccountKit;
+
 
 public class MainActivity extends Activity {
 
@@ -33,6 +37,9 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(this);
 
         //Linking variables in code to UI elements
         eMailorPhone = (EditText) findViewById(R.id.eMailorPhone);
@@ -89,9 +96,12 @@ public class MainActivity extends Activity {
                 client.setRequestMethod("POST");
                 client.setDoOutput(true);
                 client.setDoInput(true);
+                client.setRequestProperty("Accept-Charset", "UTF-8");
 
                 //Encode the request, UTF-8
                 byte[] encodedRequest = ("URL=" + urlToSummarize[0]).getBytes("UTF-8");
+
+                Log.v("Test",encodedRequest.toString());
 
                 //Write to OutputSteam
                 OutputStream os = client.getOutputStream();
