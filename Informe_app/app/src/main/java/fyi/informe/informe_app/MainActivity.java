@@ -21,12 +21,15 @@ import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
 import java.net.URL;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 
 public class MainActivity extends Activity {
 
     //Creating Views & Widgets to connect to UI elements
-    private EditText eMailorPhone, urlToSummarize;
-    private Button submiteMailorPhone, submitURL;
+    private EditText urlToSummarize;
+    private Button submitURL;
     private TextView replyFromServer;
 
     @Override
@@ -35,23 +38,12 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         //Linking variables in code to UI elements
-        eMailorPhone = (EditText) findViewById(R.id.eMailorPhone);
         urlToSummarize = (EditText) findViewById(R.id.urlToSummarize);
 
         //submiteMailorPhone = (Button) findViewById(R.id.submitMailorPhone);
         submitURL = (Button) findViewById(R.id.submitURL);
 
         replyFromServer = (TextView) findViewById(R.id.replyFromServer);
-
-        //onClick listeners to handle what happens when their respective buttons are clicked
-        /*submiteMailorPhone.setOnClickListener (new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                String LoginInfo = eMailorPhone.getText().toString();
-                Log.v("Test", LoginInfo);
-            }
-        });*/
 
         submitURL.setOnClickListener (new OnClickListener() {
             @Override
@@ -82,7 +74,7 @@ public class MainActivity extends Activity {
             //HTTP Connections operations need to be placed in a try block in case an error is encountered
             try {
 
-                URL url = new URL("http://posttestserver.com/post.php"); //www.informe.fyi:5000
+                URL url = new URL("http://informe.fyi:5000/"); //www.informe.fyi:5000
                 client = (HttpURLConnection) url.openConnection();
 
                 //Set properties for the HTTP Request
@@ -91,7 +83,7 @@ public class MainActivity extends Activity {
                 client.setDoInput(true);
 
                 //Encode the request, UTF-8
-                byte[] encodedRequest = ("URL=" + urlToSummarize[0]).getBytes("UTF-8");
+                byte[] encodedRequest = ("UserUrl=" + urlToSummarize[0]).getBytes("UTF-8");
 
                 //Write to OutputSteam
                 OutputStream os = client.getOutputStream();
@@ -126,7 +118,11 @@ public class MainActivity extends Activity {
         @Override
         protected void onPostExecute(String result) {
 
-            replyFromServer.setText(result);
+            String html = result;
+            Document doc = Jsoup.parse(html);
+            Element summary = doc.select("section").first();
+
+            replyFromServer.setText(summary.tagName("p").text());
         }
     }
 }

@@ -13,7 +13,7 @@ def getBody(url):
 			html = response.content
 			soup = BeautifulSoup(html, 'html.parser')
 	except NameError:
-		print "No URL entered"
+		print ("No URL entered")
 		sys.exit()
 
 	# Sleep to avoid spamming requests and getting timed out, don't be a dick
@@ -34,12 +34,12 @@ def getBody(url):
 		x = re.sub('<[^<]+?>', "", text.text)
 		x = re.sub('\n', "", text.text)
 	except AttributeError:
-		print "Shit, couldn't find anything to parse"
+		print ("Shit, couldn't find anything to parse")
 		sys.exit()
 
-	print x
+	print (x)
 	# Print article title
-	print "\n\nTitle: ", soup.title.text
+	print ("\n\nTitle: ", soup.title.text)
 
 url = raw_input("Please enter the url: ")
 
