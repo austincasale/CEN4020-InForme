@@ -120,9 +120,9 @@ public class MainActivity extends Activity {
 
             String html = result;
             Document doc = Jsoup.parse(html);
-            Element summary = doc.select("section").first();
+            Element summary = doc.select("section").first().select("p").first();
 
-            replyFromServer.setText(summary.tagName("p").text());
+            replyFromServer.setText(summary.text());
         }
     }
 }
