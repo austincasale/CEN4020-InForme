@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> // Website colors = Dark #313035 Mid #3C3B41 Light #A8A8A8
+    <color name="colorDark">#3C3B41</color> // Dark
+    <color name="colorMid">#313035</color> // Mid
+    <color name="colorLight">#A8A8A8</color> // Light
+</resources>

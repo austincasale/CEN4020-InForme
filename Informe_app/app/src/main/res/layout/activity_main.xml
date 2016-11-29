@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorDark"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="fyi.informe.informe_app.MainActivity">
+
+    <Button
+        android:text="Submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:id="@+id/submitURL"
+        android:layout_below="@+id/urlToSummarize"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:textColor="@color/colorLight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/submitURL"
+        android:layout_alignLeft="@+id/eMailorPhone"
+        android:layout_alignStart="@+id/eMailorPhone"
+        android:layout_marginLeft="18dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="49dp"
+        android:id="@+id/replyFromServer"
+        android:layout_alignRight="@+id/eMailorPhone"
+        android:layout_alignEnd="@+id/eMailorPhone" />
+
+    <EditText
+        android:textColorHint="@color/colorLight"
+        android:textColor="@color/colorLight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/urlToSummarize"
+        android:hint="Input URL"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
