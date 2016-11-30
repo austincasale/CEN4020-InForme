@@ -155,6 +155,7 @@ public class MainActivity extends Activity {
 
             ArrayList<String> workingUrls = new ArrayList<String>();
             workingUrls.add("the-guardian-uk");
+            workingUrls.add("the-new-york-times");
 
             ArrayList<String> urlStrings = new ArrayList<String>();
 
