@@ -1,0 +1,7 @@
+#Tue Oct 18 14:53:26 EDT 2016
+base.0=/Users/AustinCasale/Desktop/Informe/CEN4020-InForme/DummyDB/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_ae39c25b2b05b8ed5e738bf59964053a63c44dfa
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=/Users/AustinCasale/Desktop/Informe/CEN4020-InForme/DummyDB/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_53a4d129a15600041934707588c2fb957a2a5f3d/classes.dex
+base.1=/Users/AustinCasale/Desktop/Informe/CEN4020-InForme/DummyDB/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_53a4d129a15600041934707588c2fb957a2a5f3d
+file.0=/Users/AustinCasale/Desktop/Informe/CEN4020-InForme/DummyDB/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_ae39c25b2b05b8ed5e738bf59964053a63c44dfa/classes.dex
