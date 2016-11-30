@@ -20,17 +20,23 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Random;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
+import org.json.*;
+
 public class MainActivity extends Activity {
 
     //Creating Views & Widgets to connect to UI elements
     private EditText urlToSummarize;
-    private Button submitURL;
+    private Button submitURL, submitRandomArticle;
     private TextView replyFromServer;
+
+    private String APIKEY = "187a1a081bbf4b8a8e1c65020fccb7af";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,18 +48,30 @@ public class MainActivity extends Activity {
 
         //submiteMailorPhone = (Button) findViewById(R.id.submitMailorPhone);
         submitURL = (Button) findViewById(R.id.submitURL);
+        submitRandomArticle = (Button) findViewById(R.id.randomArticle);
 
         replyFromServer = (TextView) findViewById(R.id.replyFromServer);
 
-        submitURL.setOnClickListener (new OnClickListener() {
+        submitRandomArticle.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                GETtask GET = new GETtask();
+
+                GET.execute(" ");
+            }
+
+        });
+
+        submitURL.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 String summarizeThis = urlToSummarize.getText().toString();
 
-                myRunner postRun = new myRunner();
+                POSTtask POST = new POSTtask();
 
-                postRun.execute(summarizeThis);
+                POST.execute(summarizeThis);
             }
 
         });
@@ -62,7 +80,7 @@ public class MainActivity extends Activity {
 
     //AsyncTask responsible for POST methods. Needs to be placed in AsyncTask because the Main
     //Thread can not be held up with loading taskss; needs to happen in the background.
-    private class myRunner extends AsyncTask<String, String, String> {
+    private class POSTtask extends AsyncTask<String, String, String> {
 
         //Main Task. Executes in another thread, in the background.
         @Override
@@ -95,16 +113,16 @@ public class MainActivity extends Activity {
                 //Read from InputStream, Build the string line by line
                 BufferedReader br = new BufferedReader(new InputStreamReader(client.getInputStream()));
                 String line;
-                while((line = br.readLine()) != null){
+                while ((line = br.readLine()) != null) {
                     replyFromServer.append(line);
                 }
 
             } catch (MalformedURLException error) {
                 Log.v("Malformed URL", "Malformed URL");
             } catch (SocketTimeoutException error) {
-                Log.v("Socket Timeout","Socket Timeout");
+                Log.v("Socket Timeout", "Socket Timeout");
             } catch (IOException error) {
-                Log.v("Socket Timeout","Socket Timeout");
+                Log.v("Socket Timeout", "Socket Timeout");
             } finally {
                 if (client != null)
                     client.disconnect();
@@ -123,6 +141,96 @@ public class MainActivity extends Activity {
             Element summary = doc.select("section").first().select("p").first();
 
             replyFromServer.setText(summary.text());
+        }
+    }
+
+    private class GETtask extends AsyncTask<String, String, ArrayList<String>> {
+
+        //Main Task. Executes in another thread, in the background.
+        @Override
+        protected ArrayList<String> doInBackground(String... blah) {
+
+            HttpURLConnection client = null;
+            StringBuilder replyFromServer = new StringBuilder();
+
+            ArrayList<String> workingUrls = new ArrayList<String>();
+            workingUrls.add("the-guardian-uk");
+
+            ArrayList<String> urlStrings = new ArrayList<String>();
+
+            //HTTP Connections operations need to be placed in a try block in case an error is encountered
+            for (int i = 0; i < workingUrls.size(); i++) {
+
+                try {
+
+                    URL url = new URL("https://newsapi.org/v1/articles?source=" + workingUrls.get(i) + "&apiKey=" +
+                            APIKEY);
+                    client = (HttpURLConnection) url.openConnection();
+
+
+                    //Set properties for the HTTP Request
+                    client.setRequestMethod("GET");
+                    client.setDoInput(true);
+
+                    int responseCode = client.getResponseCode();
+
+                    //Read from InputStream, Build the string line by line
+                    BufferedReader br = new BufferedReader(new InputStreamReader(client.getInputStream()));
+                    String line;
+                    while ((line = br.readLine()) != null) {
+                        replyFromServer.append(line);
+                    }
+
+                    br.close();
+
+
+
+                    try {
+                        JSONObject JSONresult = new JSONObject(replyFromServer.toString());
+
+                        JSONArray ArticleData = JSONresult.getJSONArray("articles");
+
+                        for (int j = 0; j < ArticleData.length(); j++) {
+
+                            JSONObject temp = ArticleData.getJSONObject(j);
+
+                            urlStrings.add(temp.getString("url"));
+
+                        }
+
+
+                    } catch (JSONException error) {
+
+                    }
+
+                } catch (MalformedURLException error) {
+                    Log.v("Malformed URL", "Malformed URL");
+                } catch (SocketTimeoutException error) {
+                    Log.v("Socket Timeout", "Socket Timeout");
+                } catch (IOException error) {
+                    Log.v("Socket Timeout", "Socket Timeout");
+                } finally {
+                    if (client != null)
+                        client.disconnect();
+                }
+
+                replyFromServer.setLength(0);
+            }
+
+            return urlStrings;
+        }
+
+
+        //Update the TextView UI element with whatever the server send back
+        @Override
+        protected void onPostExecute(ArrayList<String> result) {
+
+            Random rand = new Random();
+
+            POSTtask POST = new POSTtask();
+
+            POST.execute(result.get(rand.nextInt(result.size())));
+
         }
     }
 }

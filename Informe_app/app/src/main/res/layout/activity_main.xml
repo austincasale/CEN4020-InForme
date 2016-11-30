@@ -37,9 +37,19 @@
         android:text="Submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="49dp"
         android:id="@+id/submitURL"
         android:layout_below="@+id/urlToSummarize"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignStart="@+id/urlToSummarize" />
+
+    <Button
+        android:text="Random"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/randomArticle"
+        android:layout_alignBaseline="@+id/submitURL"
+        android:layout_alignBottom="@+id/submitURL"
+        android:layout_toEndOf="@+id/submitURL"
+        android:layout_marginStart="17dp" />
 
 </RelativeLayout>
