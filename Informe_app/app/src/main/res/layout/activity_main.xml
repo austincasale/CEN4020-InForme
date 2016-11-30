@@ -12,6 +12,7 @@
     tools:context="fyi.informe.informe_app.MainActivity">
 
     <TextView
+        android:textColor="@color/colorLight"
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
