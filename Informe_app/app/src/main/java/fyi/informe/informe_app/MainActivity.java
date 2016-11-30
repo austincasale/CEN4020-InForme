@@ -1,6 +1,4 @@
 package fyi.informe.informe_app;
-//Copy from here to the end, skip the package name because it might have trouble compiling on your computer.
-//Package name also differs in AndroidMAnifest file and the res folder.
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -56,9 +54,9 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                GETtask GET = new GETtask();
+                GETtask GETrandomArticle = new GETtask();
 
-                GET.execute(" ");
+                GETrandomArticle.execute(" ");
             }
 
         });
@@ -144,6 +142,7 @@ public class MainActivity extends Activity {
         }
     }
 
+    //Uses an API to retrieve a random popular article to be summarized with other asynctask
     private class GETtask extends AsyncTask<String, String, ArrayList<String>> {
 
         //Main Task. Executes in another thread, in the background.
@@ -155,7 +154,6 @@ public class MainActivity extends Activity {
 
             ArrayList<String> workingUrls = new ArrayList<String>();
             workingUrls.add("the-guardian-uk");
-            workingUrls.add("the-new-york-times");
 
             ArrayList<String> urlStrings = new ArrayList<String>();
 
@@ -164,8 +162,8 @@ public class MainActivity extends Activity {
 
                 try {
 
-                    URL url = new URL("https://newsapi.org/v1/articles?source=" + workingUrls.get(i) + "&apiKey=" +
-                            APIKEY);
+                    URL url = new URL("https://newsapi.org/v1/articles?source=" + workingUrls.get(i)
+                            + "&sortBy=latest" + "&apiKey=" + APIKEY);
                     client = (HttpURLConnection) url.openConnection();
 
 
@@ -181,11 +179,9 @@ public class MainActivity extends Activity {
                     while ((line = br.readLine()) != null) {
                         replyFromServer.append(line);
                     }
-
                     br.close();
 
-
-
+                    //Parsing JSON
                     try {
                         JSONObject JSONresult = new JSONObject(replyFromServer.toString());
 
@@ -196,9 +192,7 @@ public class MainActivity extends Activity {
                             JSONObject temp = ArticleData.getJSONObject(j);
 
                             urlStrings.add(temp.getString("url"));
-
                         }
-
 
                     } catch (JSONException error) {
 
@@ -221,8 +215,7 @@ public class MainActivity extends Activity {
             return urlStrings;
         }
 
-
-        //Update the TextView UI element with whatever the server send back
+        //Calls POST async task to summarize random URL
         @Override
         protected void onPostExecute(ArrayList<String> result) {
 
