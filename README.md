@@ -18,3 +18,5 @@ Android:
 Python (Back-End):
 * One python file that uses a URL to find all of the text and return a summary.
 Easy to run, can simply replace the url. URL is currently hardcoded for testing purposes.
+* There is a file in the backend called website setup that can be followed to build the 
+program on localhost.
