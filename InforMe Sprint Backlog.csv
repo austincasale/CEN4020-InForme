@@ -3,9 +3,9 @@ User Stories,Story Points,Tasks,Day 1,Day 2,Day 3,Day 4,Day 5
 "As a user, I would like for the domain name to be catchy so that I can remember it easily.",1,Register catchy domain name (Informe.fyi).,1,-,-,-,-
 "As a user, I would like for the URL input box to properly connect to the database, so that I can send my URL for summarization.",3,Configure writing to Firebase.,3,2,0,6,-
 "As a user, I would like for text to be displayed to the page with real-time updates.",3,Configure reading from Firebase.,3,4,2,-,-
-"As a user, I would like to choose my article preferences so that I am given more similar articles in the future.",4,Article preferences saved in user account tables.,,,,,
-,,Article keywords saved to relate one article to another.,,,,,
-,,GUI feature to allow yes/no article preferences.,,,,,
+"As a user, I would like to choose my article preferences so that I am given more similar articles in the future.",4,Article preferences saved in user account tables.,-,-,-,-,
+,-,Article keywords saved to relate one article to another.,-,-,-,-,
+,-,GUI feature to allow yes/no article preferences.,-,-,-,-,
 "As a user, I would like to manage my article preferences so that I can remove any mistaken preferences.",2,Add interface section under User Profile for preference management.,,,,,
 ,,List preferences in order with Yes/No toggle.,,,,,
 "As a user, I would like to visit the full text of the summarized article so that I can explore the topic further.",1,Attach URL to body of article summary.,,,,,
