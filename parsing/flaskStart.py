@@ -2,6 +2,7 @@ import re, sys, urllib2, requests
 from flask import Flask
 from flask import request
 from flask import render_template
+from flask import Markup
 from nltk.tokenize import sent_tokenize,word_tokenize
 from nltk.corpus import stopwords
 from heapq import nlargest
@@ -85,6 +86,20 @@ def getText(url):
 
  return soup.title.text, text
 
+def getTitle(url):
+ response = requests.get(url)
+ try:
+    if response.ok:
+      html = response.content
+      soup = BeautifulSoup(html, 'html')
+ except NameError:
+  print "No URL entered"
+  sys.exit()
+ # Join all the content in <p> tags by ' ' to form one big ol unicode obj
+ text = '  '.join(map(lambda p: p.text, soup.find_all('p')))
+
+ return soup.title.text
+
 #***************************************************************************************************
 # This works best with foxnews, the guardian, buzzfeed. NYtimes for example does not work at all. They have Web crawling
 # protections in place and don't allow our service to correctly function there at the time...
@@ -106,13 +121,13 @@ def goURL(url):
 
 @app.route('/')
 def index_form():
-  return render_template("index.html")
+  return render_template("indexFlask.html")
 
 @app.route('/', methods =['POST'])
 def index_form_post():
   text = request.form['UserUrl']
-  return goURL(text)
+  return render_template('indexFlask.html', summ = goURL(text), title = getTitle(text))
 
 
 if __name__ == 'main':
-  app.run(host='0.0.0.0')
+  app.run(host='0.0.0.0', port=80)
