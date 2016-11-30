@@ -19,7 +19,9 @@
         android:layout_marginTop="74dp"
         android:id="@+id/replyFromServer"
         android:layout_below="@+id/submitURL"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:maxLines = "500"
+        android:scrollbars = "vertical" />
 
     <EditText
         android:textColorHint="@color/colorLight"

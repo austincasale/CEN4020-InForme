@@ -2,6 +2,7 @@ package fyi.informe.informe_app;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
@@ -40,6 +41,9 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        replyFromServer = (TextView) findViewById(R.id.replyFromServer);
+        replyFromServer.setMovementMethod(new ScrollingMovementMethod());
 
         //Linking variables in code to UI elements
         urlToSummarize = (EditText) findViewById(R.id.urlToSummarize);
@@ -90,7 +94,7 @@ public class MainActivity extends Activity {
             //HTTP Connections operations need to be placed in a try block in case an error is encountered
             try {
 
-                URL url = new URL("http://informe.fyi:5000/"); //www.informe.fyi:5000
+                URL url = new URL("http://informe.fyi:5000/");
                 client = (HttpURLConnection) url.openConnection();
 
                 //Set properties for the HTTP Request
