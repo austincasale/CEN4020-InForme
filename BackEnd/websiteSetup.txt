@@ -1,0 +1,132 @@
+  How to setup our Flask app
+-----------------------------
+
+I encourage you to use google for any errors you may have in set up. This
+process differs greatly from operating system to operating system. Not all computers will have
+the same issues, same OS or not.
+
+-**- 1. Install Python -**-
+
+	If you have it already, great. You can skip this step.
+	Install Homebrew by putting this command in your command line:
+	-----------	-----------	-----------	-----------	-----------	----------- -----------	-----------
+	$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	$ brew install python
+	-----------	-----------	-----------	-----------	-----------	----------- -----------	-----------
+	Homebrew installs Setuptools and pip for you, pip is our recommended package installer. Don't use easy install unless you've gotta.
+
+	Make sure you have pip, if you don't download it. Google is filled with hundreds of way to do this on many different operating systems.
+
+-**- 2. Install all the packages/frameworks/modules used -**-
+
+	Packages/frameworks/modules include: 
+
+	- NLTK
+	This page tells you how to get NLTK
+	 -- http://www.nltk.org/install.html -- 
+	 Now you need stopwords, and nlargest
+	 http://blog.nlpapi.co/how-to-install-nltk-corporastopwords/
+	 Follow this tutorial, probably best off to just download all components.
+	 This stackoverflow shows how to get all components:
+	 http://stackoverflow.com/questions/22211525/how-do-i-download-nltk-data
+	 ----------- ----------- ----------- ----------- ----------- ----------- -----------	
+	 $ python
+		>>> import nltk
+		>>> nltk.download('all')
+	 ----------- ----------- ----------- ----------- ----------- ----------- -----------	
+
+	- requests
+		This is used to get that sweet html
+	 ----------- ----------- ----------- ----------- ----------- ----------- -----------	
+	 $ sudo pip install requests
+	 ----------- ----------- ----------- ----------- ----------- ----------- -----------
+
+	- beautifulsoup4
+		This is used after you've got that sweet html
+	 ----------- ----------- ----------- ----------- ----------- ----------- -----------	
+	 $ sudo pip install beautifulsoup4
+	 ----------- ----------- ----------- ----------- ----------- ----------- -----------
+
+	- flask
+		Web framework used for the post methods to the backend
+	 ----------- ----------- ----------- ----------- ----------- ----------- -----------	
+	 $ sudo pip install Flask
+	 ----------- ----------- ----------- ----------- ----------- ----------- -----------	
+
+
+-**- 3. Set up your flask virtual environment -**-
+	
+	Install the virtualenv
+	 ----------- ----------- ----------- ----------- ----------- ----------- -----------	
+	 $ sudo pip install virtualenv
+	 ----------- ----------- ----------- ----------- ----------- ----------- -----------
+	 or
+	 ----------- ----------- ----------- ----------- ----------- ----------- -----------	
+	 $ sudo easy_install virtualenv
+	 ----------- ----------- ----------- ----------- ----------- ----------- -----------
+
+	Now make a directory and the virtual environment inside the directory:
+	 ----------- ----------- ----------- ----------- ----------- ----------- -----------	
+	 $ mkdir myproject
+	 $ cd myproject
+	 $ virtualenv venv
+	 ----------- ----------- ----------- ----------- ----------- ----------- -----------	
+	To work in this virtual environment you have to activate it so
+	 ----------- ----------- ----------- ----------- ----------- ----------- -----------	
+	 $ . venv/bin/activate
+	 ----------- ----------- ----------- ----------- ----------- ----------- -----------	
+	This will take you back out of the virtual environment
+	 ----------- ----------- ----------- ----------- ----------- ----------- -----------	
+	 $ deactivate
+	 ----------- ----------- ----------- ----------- ----------- ----------- -----------
+	This is a tutorial to help if these short steps don't work:
+
+	http://flask.pocoo.org/docs/0.11/installation/
+
+	== The FlaskApp file that you need in this next step is on the github under BackEnd ==
+
+	Now in your virtual environment place the FlaskApp file:
+
+	Inside FlaskApp is: get.py, static, and templates
+	So
+	 -- templates/indexFlask.html --
+	is using the css style from 
+	 -- static/styles/stylesFlask.css --
+
+	 Inside of FlaskApp/
+	 Run this:
+	 ----------- ----------- ----------- ----------- ----------- ----------- -----------	
+	 $ export FLASK_APP=get.py
+	 $ chmod a+x get.py
+	 $ ./get.py
+	 ----------- ----------- ----------- ----------- ----------- ----------- -----------
+	 The site should deploy on 
+	  -- http://localhost:5000 -- 
+	 so open up your browser to check it out.
+	 This is a useful tutorial to run a basic flask app if you have trouble:
+	 https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
+
+	 You may have to change the last line of get.py from: 
+	   app.run(host='0.0.0.0', port=80)
+	 so that it isn't host='0.0.0.0'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
