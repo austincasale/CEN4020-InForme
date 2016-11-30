@@ -1,0 +1,67 @@
+<!-- Implemented by Dexter and Ernest -->
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <!-- Firebase Connection -->
+  <script src="https://www.gstatic.com/firebasejs/3.5.0/firebase.js"></script>
+  <!-- CSS File -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/stylesFlask.css')}}">  
+  <meta charset="utf-8">
+  <title>InforMe</title>
+</head>
+
+<body>
+
+<header> 
+	<h1><strong><b>INFORME</b></strong></h1>
+	<p style="font-size: 1.2em;"><i>Article summarization made easy!</i></p>
+</header>
+
+<div id="SubmissionSection">
+	<br><form action="." method="post">
+        	<input type="url" id="urlSpef" name="UserUrl" size="100" placeholder="Paste your URL for summarization here."><input type="submit" onclick="storeURL()" value="Submit URL">
+	</form><br>
+		{% if summ %}
+		<section id="SummarySection" width="150" height="150">
+		  <h1>{{ title }}</h1>
+		  <br><p>{{ summ }}</p></br>
+		<p class="SmallTopPadding" id="articleSummary"></p>
+		<br><cite id="citation"></cite>
+	</section>
+		{% endif %}
+
+
+</div>
+
+<footer>
+	<div id="Footer">
+		<div id="AboutColumn">
+			<h1>About Us</h1>
+			<p style="font-size: 1.1em;">InforMe was developed by a small team of four learning programmers! We all study at Florida State University, and have each used InforMe to take a deep dive into programming languages we have never used before. Our goal is simple: create a minimalistic web interface that allows users to summarize articles on-the-fly, and then quickly share those article summaries with their friends. It makes digesting the news quick, easy, and ad-free.</p>
+		</div>
+		<div id="ContactColumn">
+			<h1>Contact Us</h1>
+			<form id="contact_form">
+				<div>
+					<input type="text" placeholder="Your Name" id="contact_name">
+				</div>
+				<div>
+					<input type="email" placeholder="Your Email" id="contact_email">
+				</div>
+				<div>
+					<textarea id="contact_message" placeholder="Example Message: I love InforMe, but I think using yellow text colors would be easier on the eyes!"></textarea>
+				</div>
+				<div>
+					<input type="submit" id="contact_submit" value="Send Email">
+				</div>
+			</form>
+		</div>
+	</div>
+</footer>
+
+<script src="app.js"></script>
+
+</body>
+</html>
