@@ -160,8 +160,8 @@ Android Application
 	phone and tap Build number seven times. Return to the previous screen to
 	find Developer options at the bottom"
 	
-	After turning on Developer options, connect the phone to the computer via
-	USB. Additional drivers may automatically be installed.
+	After turning on Developer options and USB debugging, connect the phone to 
+	the computer via USB. Additional drivers may automatically be installed.
 	
 	Click the green play button near the Top-Middle of Android Studio. A 
 	prompt will pop up asking which device you would like to run the App pn.
