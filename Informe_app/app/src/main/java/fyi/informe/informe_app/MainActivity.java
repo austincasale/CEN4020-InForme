@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Button;
 import android.app.Activity;
 import android.util.Log;
 import android.widget.TextView;
+import android.content.Context;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -33,7 +35,7 @@ public class MainActivity extends Activity {
     //Creating Views & Widgets to connect to UI elements
     private EditText urlToSummarize;
     private Button submitURL, submitRandomArticle;
-    private TextView replyFromServer;
+    private TextView replyFromServer, titleSummary;
 
     private String APIKEY = "187a1a081bbf4b8a8e1c65020fccb7af";
 
@@ -42,9 +44,6 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        replyFromServer = (TextView) findViewById(R.id.replyFromServer);
-        replyFromServer.setMovementMethod(new ScrollingMovementMethod());
-
         //Linking variables in code to UI elements
         urlToSummarize = (EditText) findViewById(R.id.urlToSummarize);
 
@@ -52,15 +51,23 @@ public class MainActivity extends Activity {
         submitURL = (Button) findViewById(R.id.submitURL);
         submitRandomArticle = (Button) findViewById(R.id.randomArticle);
 
+        titleSummary = (TextView) findViewById(R.id.titleSummary);
         replyFromServer = (TextView) findViewById(R.id.replyFromServer);
+        replyFromServer.setMovementMethod(new ScrollingMovementMethod());
 
         submitRandomArticle.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                GETtask GETrandomArticle = new GETtask();
+            InputMethodManager inputManager = (InputMethodManager)
+                    getSystemService(Context.INPUT_METHOD_SERVICE);
 
-                GETrandomArticle.execute(" ");
+            inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                    InputMethodManager.HIDE_NOT_ALWAYS);
+
+            GETtask GETrandomArticle = new GETtask();
+
+            GETrandomArticle.execute(" ");
             }
 
         });
@@ -69,11 +76,18 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
 
+                InputMethodManager inputManager = (InputMethodManager)
+                        getSystemService(Context.INPUT_METHOD_SERVICE);
+
+                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                        InputMethodManager.HIDE_NOT_ALWAYS);
+
                 String summarizeThis = urlToSummarize.getText().toString();
-
-                POSTtask POST = new POSTtask();
-
-                POST.execute(summarizeThis);
+                
+                if (summarizeThis.length() > 1){
+                    POSTtask POST = new POSTtask();
+                    POST.execute(summarizeThis);
+                }
             }
 
         });
@@ -141,6 +155,19 @@ public class MainActivity extends Activity {
             String html = result;
             Document doc = Jsoup.parse(html);
             Element summary = doc.select("section").first().select("p").first();
+            Element title = doc.select("section").first().select("h1").first();
+
+
+            if (title.text().toString().length() > 100){
+
+                String shorter = title.text().substring(0 ,100);
+                String shortenedString = shorter + "...";
+                titleSummary.setText(shortenedString);
+            }
+            else {
+                titleSummary.setText(title.text());
+            }
+
 
             replyFromServer.setText(summary.text());
         }
