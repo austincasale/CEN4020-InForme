@@ -12,28 +12,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="fyi.informe.informe_app.MainActivity">
 
-    <EditText
-        android:textColorHint="@color/colorLight"
-        android:textColor="@color/colorLight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/urlToSummarize"
-        android:hint="Input URL"
-        android:layout_marginTop="146dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/informelogo"
-        android:layout_marginTop="38dp"
-        android:id="@+id/imageView6"
-        android:scaleType="fitCenter"
-        android:layout_alignParentTop="true" />
-
     <Button
         android:text="Submit"
         android:layout_width="wrap_content"
@@ -47,7 +25,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/titleSummary"
-        android:textColor="@color/colorLight"
         android:textSize="18dp"
         android:layout_below="@+id/submitURL"
         android:layout_centerHorizontal="true"
@@ -63,7 +40,6 @@
         android:layout_alignEnd="@+id/urlToSummarize" />
 
     <TextView
-        android:textColor="@color/colorLight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/replyFromServer"
@@ -73,5 +49,28 @@
         android:background="@color/LightLight"
         android:layout_below="@+id/titleSummary"
         android:layout_marginTop="12dp"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/informelogo"
+        android:layout_marginTop="38dp"
+        android:id="@+id/imageView6"
+        android:scaleType="fitCenter"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:textColorHint="@color/colorLight"
+        android:textColor="@color/colorLight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/urlToSummarize"
+        android:hint="Input URL"
+        android:layout_marginTop="51dp"
+        android:layout_below="@+id/imageView6"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
