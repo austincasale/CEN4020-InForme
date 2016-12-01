@@ -115,3 +115,59 @@ Flask Application (Back-End and Website)
 
 Android Application
 -------------------
+
+* Must have the "Informe_app" folder from the project directory. Save this folder to 
+ your Desktop, or a place where you can easily locate it.
+ 
+* Must have latest version of Android installed on phone.
+
+-**- 1. Install Android Studio:  -**-
+
+	Head to https://developer.android.com/studio/index.html and install Android Studio, 
+	specifically "android-studio-bundle-145.3360264-windows.exe".
+	
+	This should include the Android SDK.
+	
+-**- 2. Import to Android Studio:  -**-
+	
+	Open Android Studio and wait until program finishes loading.
+	
+	File > Open... > Informe_app
+	
+	Now you will have the project loaded into Android Studio.
+	
+	The main files to look at is:
+	MainActivity.java
+	activity_main.xml
+	AndroidManifest.xml
+	
+	This is where the coding was done.
+	
+	**Warning** 
+	If there are import errors, then possibly the correct SDK was
+	not installed. Need to get rid of all errors to compile and run.
+	
+	Tools > Android > SDK Manager > Android 7 (API 24) > Install
+	
+-**- 3. Running the App:  -**-
+	
+	Developer options on the phone need to be turned on to switch on
+	USB debugging on your phone. USB debugging is required to run
+	the compiled app.
+	
+	From Android site: "On Android 4.2 and higher, the Developer options
+	screen is hidden by default. To make it visible, go to Settings > About
+	phone and tap Build number seven times. Return to the previous screen to
+	find Developer options at the bottom"
+	
+	After turning on Developer options, connect the phone to the computer via
+	USB. Additional drivers may automatically be installed.
+	
+	Click the green play button near the Top-Middle of Android Studio. A 
+	prompt will pop up asking which device you would like to run the App pn.
+	Your phone should be listed on here. If not, either USB debugging is not
+	turned on, or the correct driver for your phone is not installed on the
+	computer.
+	
+	
+	
