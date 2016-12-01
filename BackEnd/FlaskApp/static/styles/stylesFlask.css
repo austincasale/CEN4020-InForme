@@ -39,7 +39,7 @@ cite {
 	display: block;
 }
 
-input[type=text], select {
+input[type=url], select {
 	width: 75%;
     padding: 5px 5px;
     margin: 8px 0px;
