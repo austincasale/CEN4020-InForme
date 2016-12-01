@@ -7,4 +7,4 @@ User Stories,Story Points,Tasks,Day 1,Day 2,Day 3,Day 4,Day 5
 "As a user, I would like to have the Android application reflect the colors and style of the webpage so that I have a uniform experience on all platforms.",2,Adjust Android files to reflect the same hex codes used on the website.,3,1,-,-,-
 "As a user, I would like to have access to relevant information in the footer of the index page, so that I can explore further mediums to contact the webpage developers.",2,Create relevant social media connections to list in the footer of the website.,3,2,-,-,-
 "As a user, I would like to be able to see random news articles at the touch of a button so that I can browse news articles quickly.",1,Added a button to the android app that acesses an API to retrieve an article.,1,-,-,-,-
-"As a user, I would like to be able to enter a URL from mobile so that I can use informe from mobile. ",3,created an adroid app so that informe could be acessed from mobile.,3,4,-,2,-
+"As a user, I would like to be able to enter a URL from mobile so that I can use InforMe on the go.",3,created an adroid app so that informe could be acessed from mobile.,3,4,-,2,-
