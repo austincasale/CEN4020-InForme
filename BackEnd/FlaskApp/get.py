@@ -101,9 +101,7 @@ def getTitle(url):
  return soup.title.text
 
 #***************************************************************************************************
-# This works best with foxnews, the guardian, buzzfeed. NYtimes for example does not work at all. They have Web crawling
-# protections in place and don't allow our service to correctly function there at the time...
-# This is where the body begins
+# Pick any article url really
 #***************************************************************************************************
 def goURL(url):
   # instance of class
