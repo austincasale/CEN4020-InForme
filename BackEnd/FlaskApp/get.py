@@ -1,4 +1,4 @@
-import re, sys, urllib2, requests
+import re, sys, requests
 from flask import Flask
 from flask import request
 from flask import render_template
